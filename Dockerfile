@@ -4,6 +4,9 @@ FROM ubuntu:18.04
 # Avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Set environment variable to allow building as root
+ENV FORCE_UNSAFE_CONFIGURE=1
+
 # Install necessary dependencies
 RUN apt-get update && apt-get install -y \
     git \
