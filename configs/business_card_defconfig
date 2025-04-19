@@ -1,16 +1,12 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot -gebdf7d5f Configuration
+# Buildroot 2025.02 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
 BR2_HOST_GCC_AT_LEAST_5=y
 BR2_HOST_GCC_AT_LEAST_6=y
 BR2_HOST_GCC_AT_LEAST_7=y
-BR2_HOST_GCC_AT_LEAST_8=y
-BR2_HOST_GCC_AT_LEAST_9=y
-BR2_HOST_GCC_AT_LEAST_10=y
-BR2_HOST_GCC_AT_LEAST_11=y
 
 #
 # Target options
@@ -179,12 +175,10 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="glibc"
 # BR2_KERNEL_HEADERS_6_1 is not set
 # BR2_KERNEL_HEADERS_6_6 is not set
 # BR2_KERNEL_HEADERS_6_12 is not set
-# BR2_KERNEL_HEADERS_6_13 is not set
 BR2_KERNEL_HEADERS_VERSION=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_DEFAULT_KERNEL_VERSION="5.2"
-# BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_6_13 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_6_12 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_6_11 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_6_10 is not set
@@ -439,7 +433,10 @@ BR2_GNU_MIRROR="https://ftpmirror.gnu.org"
 BR2_LUAROCKS_MIRROR="http://rocks.moonscript.org"
 BR2_CPAN_MIRROR="https://cpan.metacpan.org"
 BR2_JLEVEL=0
-# BR2_CCACHE is not set
+
+#
+# ccache needs a host gcc >= 8
+#
 # BR2_ENABLE_DEBUG is not set
 # BR2_ENABLE_RUNTIME_DEBUG is not set
 BR2_STRIP_strip=y
@@ -507,12 +504,14 @@ BR2_TARGET_GENERIC_PASSWD_METHOD="sha-256"
 BR2_INIT_BUSYBOX=y
 # BR2_INIT_SYSV is not set
 # BR2_INIT_OPENRC is not set
-# BR2_INIT_SYSTEMD is not set
+
+#
+# systemd needs a glibc toolchain w/ SSP, headers >= 3.15, host and target gcc >= 8
+#
 
 #
 # Special purpose (read help)
 #
-# BR2_INIT_CATATONIT is not set
 # BR2_INIT_TINI is not set
 # BR2_INIT_TINYINIT is not set
 # BR2_INIT_NONE is not set
@@ -551,7 +550,7 @@ BR2_GENERATE_LOCALE=""
 # BR2_SYSTEM_ENABLE_NLS is not set
 # BR2_TARGET_TZ_INFO is not set
 BR2_ROOTFS_USERS_TABLES=""
-BR2_ROOTFS_OVERLAY=""
+BR2_ROOTFS_OVERLAY="$PWD/../rootfs_overlay/"
 BR2_ROOTFS_PRE_BUILD_SCRIPT=""
 BR2_ROOTFS_POST_BUILD_SCRIPT=""
 BR2_ROOTFS_POST_FAKEROOT_SCRIPT=""
@@ -642,7 +641,7 @@ BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_MOTION is not set
 
 #
-# mpd needs a toolchain w/ C++, threads, wchar, host-gcc 10, gcc 12, headers 5.6
+# mpd needs a toolchain w/ C++, threads, wchar, gcc >= 8, host gcc >= 8
 #
 # BR2_PACKAGE_MPD_MPC is not set
 # BR2_PACKAGE_MPG123 is not set
@@ -968,7 +967,6 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # BR2_PACKAGE_SSHFS is not set
 # BR2_PACKAGE_SUNXI_TOOLS is not set
 # BR2_PACKAGE_UDFTOOLS is not set
-# BR2_PACKAGE_UFS_UTILS is not set
 # BR2_PACKAGE_UNIONFS is not set
 
 #
@@ -1141,7 +1139,7 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_SWAYBG is not set
 
 #
-# tesseract-ocr needs a toolchain w/ threads, C++, gcc >= 8, dynamic library, wchar
+# tesseract-ocr needs a toolchain w/ threads, C++, gcc >= 7, dynamic library, wchar
 #
 # BR2_PACKAGE_TINIFIER is not set
 
@@ -1285,7 +1283,6 @@ BR2_PACKAGE_QT6_ARCH_SUPPORTS=y
 # BR2_PACKAGE_ODROIDC2_FIRMWARE is not set
 # BR2_PACKAGE_PANEL_MIPI_DBI_FIRMWARE is not set
 # BR2_PACKAGE_QCOM_DB410C_FIRMWARE is not set
-# BR2_PACKAGE_QORIQ_DDR_PHY_BINARY is not set
 # BR2_PACKAGE_QORIQ_FM_UCODE is not set
 # BR2_PACKAGE_RCW_SMARC_SAL28 is not set
 # BR2_PACKAGE_RPI_FIRMWARE is not set
@@ -1328,7 +1325,7 @@ BR2_PACKAGE_QT6_ARCH_SUPPORTS=y
 # BR2_PACKAGE_CBOOTIMAGE is not set
 
 #
-# cc-tool needs a toolchain w/ C++, threads, wchar, gcc >= 4.9 
+# cc-tool needs a toolchain w/ C++, threads, wchar, gcc >= 4.9
 #
 # BR2_PACKAGE_CDRKIT is not set
 BR2_PACKAGE_CPUBURN_ARM_ARCH_SUPPORTS=y
@@ -1421,10 +1418,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # libiec61850 needs a toolchain w/ C++, threads, dynamic library
 #
-
-#
-# libmanette needs a toolchain w/ wchar, NPTL threads, gcc >= 4.9, headers >= 4.16, udev
-#
+# BR2_PACKAGE_LIBMANETTE is not set
 # BR2_PACKAGE_LIBUBOOTENV is not set
 # BR2_PACKAGE_LIBUIO is not set
 
@@ -1588,7 +1582,6 @@ BR2_PACKAGE_SEDUTIL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_SUNXI_CEDARX is not set
 # BR2_PACKAGE_SUNXI_MALI_UTGARD is not set
 # BR2_PACKAGE_SYSSTAT is not set
-# BR2_PACKAGE_TARGETCLI_FB is not set
 
 #
 # ti-gfx needs a glibc toolchain and a Linux kernel to be built
@@ -1801,7 +1794,10 @@ BR2_PACKAGE_PYTHON3_UNICODEDATA=y
 # BR2_PACKAGE_PYTHON_BITSTRING is not set
 # BR2_PACKAGE_PYTHON_BLEAK is not set
 # BR2_PACKAGE_PYTHON_BLINKER is not set
-# BR2_PACKAGE_PYTHON_BLUEZERO is not set
+
+#
+# python-bluezero needs a glibc toolchain, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_PYTHON_BOTO3 is not set
 # BR2_PACKAGE_PYTHON_BOTOCORE is not set
 # BR2_PACKAGE_PYTHON_BOTTLE is not set
@@ -1879,7 +1875,6 @@ BR2_PACKAGE_PYTHON3_UNICODEDATA=y
 # BR2_PACKAGE_PYTHON_DTSCHEMA is not set
 # BR2_PACKAGE_PYTHON_ECDSA is not set
 # BR2_PACKAGE_PYTHON_EMAIL_VALIDATOR is not set
-# BR2_PACKAGE_PYTHON_EMAILPROXY is not set
 # BR2_PACKAGE_PYTHON_ENGINEIO is not set
 # BR2_PACKAGE_PYTHON_ENTRYPOINTS is not set
 # BR2_PACKAGE_PYTHON_ESPTOOL is not set
@@ -1908,7 +1903,10 @@ BR2_PACKAGE_PYTHON3_UNICODEDATA=y
 # BR2_PACKAGE_PYTHON_GIT is not set
 # BR2_PACKAGE_PYTHON_GITDB2 is not set
 # BR2_PACKAGE_PYTHON_GNUPG is not set
-# BR2_PACKAGE_PYTHON_GOBJECT is not set
+
+#
+# python-gobject needs a glibc or musl toolchain, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_PYTHON_GOOGLE_API_CORE is not set
 # BR2_PACKAGE_PYTHON_GOOGLE_AUTH is not set
 # BR2_PACKAGE_PYTHON_GOOGLEAPIS_COMMON_PROTOS is not set
@@ -2237,7 +2235,6 @@ BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS=y
 # BR2_PACKAGE_PYTHON_SETUPTOOLS is not set
 # BR2_PACKAGE_PYTHON_SH is not set
 # BR2_PACKAGE_PYTHON_SHUTILWHICH is not set
-# BR2_PACKAGE_PYTHON_SIMPLE_PID is not set
 # BR2_PACKAGE_PYTHON_SIMPLE_WEBSOCKET is not set
 # BR2_PACKAGE_PYTHON_SIMPLEAUDIO is not set
 # BR2_PACKAGE_PYTHON_SIMPLEGENERIC is not set
@@ -2251,7 +2248,6 @@ BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_PYTHON_SMBPROTOCOL is not set
 # BR2_PACKAGE_PYTHON_SMBUS_CFFI is not set
-# BR2_PACKAGE_PYTHON_SMBUS2 is not set
 # BR2_PACKAGE_PYTHON_SMMAP2 is not set
 
 #
@@ -2309,7 +2305,6 @@ BR2_PACKAGE_PYTHON_NUMPY_ARCH_SUPPORTS=y
 # BR2_PACKAGE_PYTHON_TYPES_PYTHON_DATEUTIL is not set
 # BR2_PACKAGE_PYTHON_TYPING_EXTENSIONS is not set
 # BR2_PACKAGE_PYTHON_TYPING_INSPECT is not set
-# BR2_PACKAGE_PYTHON_TZLOCAL is not set
 # BR2_PACKAGE_PYTHON_U_MSGPACK is not set
 # BR2_PACKAGE_PYTHON_UBJSON is not set
 # BR2_PACKAGE_PYTHON_UHID is not set
@@ -3700,7 +3695,10 @@ BR2_PACKAGE_LIBZENOH_C_ARCH_SUPPORTS=y
 #
 BR2_PACKAGE_GMP=y
 BR2_PACKAGE_GOBJECT_INTROSPECTION_ARCH_SUPPORTS=y
-# BR2_PACKAGE_GOBJECT_INTROSPECTION is not set
+
+#
+# gobject-introspection needs a glibc or musl toolchain, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_GSL is not set
 
 #
@@ -3793,7 +3791,10 @@ BR2_PACKAGE_LIBNSPR_ARCH_SUPPORT=y
 #
 # libosmium needs a toolchain w/ C++, wchar, threads, gcc >= 5
 #
-# BR2_PACKAGE_LIBPEAS is not set
+
+#
+# libpeas needs a glibc toolchain, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_LIBPFM4 is not set
 
 #
@@ -4108,7 +4109,6 @@ BR2_PACKAGE_Z3_ARCH_SUPPORTS=y
 #
 # Networking applications
 #
-# BR2_PACKAGE_AARDVARK_DNS is not set
 
 #
 # aircrack-ng needs a toolchain w/ dynamic library, threads, C++
@@ -4208,7 +4208,10 @@ BR2_PACKAGE_DROPBEAR_LOCALOPTIONS_FILE=""
 # BR2_PACKAGE_FAIL2BAN is not set
 # BR2_PACKAGE_FASTD is not set
 # BR2_PACKAGE_FCGIWRAP is not set
-# BR2_PACKAGE_FIREWALLD is not set
+
+#
+# firewalld needs a glibc toolchain w/ wchar, dynamic library, headers >= 3.12, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_FLANNEL is not set
 # BR2_PACKAGE_FPING is not set
 # BR2_PACKAGE_FREERADIUS_SERVER is not set
@@ -4335,7 +4338,6 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_NCFTP is not set
 # BR2_PACKAGE_NDISC6 is not set
 # BR2_PACKAGE_NETATALK is not set
-# BR2_PACKAGE_NETAVARK is not set
 # BR2_PACKAGE_NETCALC is not set
 
 #
@@ -4346,7 +4348,7 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_NETSTAT_NAT is not set
 
 #
-# NetworkManager needs udev /dev management and a glibc or musl toolchain w/ headers >= 5.4, dynamic library, wchar, threads, gcc >= 4.9
+# NetworkManager needs udev /dev management and a glibc or musl toolchain w/ headers >= 4.20, dynamic library, wchar, threads, gcc >= 4.9
 #
 # BR2_PACKAGE_NFACCT is not set
 # BR2_PACKAGE_NFTABLES is not set
@@ -4380,7 +4382,6 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_OPENVPN is not set
 # BR2_PACKAGE_P910ND is not set
 # BR2_PACKAGE_PARPROUTED is not set
-# BR2_PACKAGE_PASST is not set
 # BR2_PACKAGE_PHIDGETWEBSERVICE is not set
 # BR2_PACKAGE_PHYTOOL is not set
 # BR2_PACKAGE_PIMD is not set
@@ -4525,35 +4526,35 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 #
 
 #
-# Please note:                                           
+# Please note:
 #
 
 #
-# - Buildroot does *not* generate binary packages,       
+# - Buildroot does *not* generate binary packages,
 #
 
 #
-# - Buildroot does *not* install any package database.   
+# - Buildroot does *not* install any package database.
 #
 
 #
-# *                                                      
+# *
 #
 
 #
-# It is up to you to provide those by yourself if you    
+# It is up to you to provide those by yourself if you
 #
 
 #
-# want to use any of those package managers.             
+# want to use any of those package managers.
 #
 
 #
-# *                                                      
+# *
 #
 
 #
-# See the manual:                                        
+# See the manual:
 #
 
 #
@@ -4623,11 +4624,6 @@ BR2_PACKAGE_GNUPG2_DEPENDS=y
 # BR2_PACKAGE_LOCKFILE_PROGS is not set
 # BR2_PACKAGE_LOGROTATE is not set
 # BR2_PACKAGE_LOGSURFER is not set
-# BR2_PACKAGE_LOWDOWN is not set
-
-#
-# lowdown needs a toolchain w/ wchar and shared library support
-#
 # BR2_PACKAGE_MINISIGN is not set
 # BR2_PACKAGE_PDMENU is not set
 # BR2_PACKAGE_PINENTRY is not set
@@ -4651,7 +4647,6 @@ BR2_PACKAGE_SCREEN=y
 # System tools
 #
 # BR2_PACKAGE_ACL is not set
-# BR2_PACKAGE_AMAZON_ECR_CREDENTIAL_HELPER is not set
 # BR2_PACKAGE_ANDROID_TOOLS is not set
 # BR2_PACKAGE_ATOP is not set
 # BR2_PACKAGE_ATTR is not set
@@ -4660,7 +4655,6 @@ BR2_PACKAGE_AUDIT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_BALENA_ENGINE is not set
 # BR2_PACKAGE_BUBBLEWRAP is not set
 # BR2_PACKAGE_CGROUPFS_MOUNT is not set
-# BR2_PACKAGE_CGROUPFS_V2_MOUNT is not set
 
 #
 # circus needs Python 3 and a toolchain w/ C++, threads
@@ -4687,8 +4681,6 @@ BR2_PACKAGE_CRIU_ARCH_SUPPORTS=y
 #
 # docker-compose needs docker-cli and a toolchain w/ threads
 #
-# BR2_PACKAGE_DOCKER_CREDENTIAL_ACR_ENV is not set
-# BR2_PACKAGE_DOCKER_CREDENTIAL_GCR is not set
 # BR2_PACKAGE_DOCKER_ENGINE is not set
 # BR2_PACKAGE_EARLYOOM is not set
 # BR2_PACKAGE_EFIBOOTMGR is not set
@@ -4749,7 +4741,6 @@ BR2_PACKAGE_MAKEDUMPFILE_ARCH_SUPPORTS=y
 #
 # petitboot needs a toolchain w/ wchar, dynamic library, threads, udev /dev management
 #
-# BR2_PACKAGE_PODMAN is not set
 # BR2_PACKAGE_POLKIT is not set
 # BR2_PACKAGE_PROCRANK_LINUX is not set
 # BR2_PACKAGE_PROCS is not set
@@ -4777,7 +4768,6 @@ BR2_PACKAGE_MAKEDUMPFILE_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_SEATD is not set
 # BR2_PACKAGE_SHADOW is not set
-# BR2_PACKAGE_SKOPEO is not set
 # BR2_PACKAGE_SMACK is not set
 # BR2_PACKAGE_SUPERVISOR is not set
 # BR2_PACKAGE_SWUPDATE is not set
@@ -4886,25 +4876,7 @@ BR2_PACKAGE_NANO_TINY=y
 # BR2_TARGET_ROOTFS_CPIO is not set
 # BR2_TARGET_ROOTFS_CRAMFS is not set
 # BR2_TARGET_ROOTFS_EROFS is not set
-BR2_TARGET_ROOTFS_EXT2=y
-# BR2_TARGET_ROOTFS_EXT2_2r1 is not set
-# BR2_TARGET_ROOTFS_EXT2_3 is not set
-BR2_TARGET_ROOTFS_EXT2_4=y
-BR2_TARGET_ROOTFS_EXT2_GEN=4
-BR2_TARGET_ROOTFS_EXT2_LABEL="rootfs"
-BR2_TARGET_ROOTFS_EXT2_SIZE="248M"
-BR2_TARGET_ROOTFS_EXT2_INODES=0
-BR2_TARGET_ROOTFS_EXT2_INODE_SIZE=256
-BR2_TARGET_ROOTFS_EXT2_RESBLKS=5
-BR2_TARGET_ROOTFS_EXT2_MKFS_OPTIONS="-O ^metadata_csum,^64bit,^has_journal"
-BR2_TARGET_ROOTFS_EXT2_NONE=y
-# BR2_TARGET_ROOTFS_EXT2_GZIP is not set
-# BR2_TARGET_ROOTFS_EXT2_BZIP2 is not set
-# BR2_TARGET_ROOTFS_EXT2_LZ4 is not set
-# BR2_TARGET_ROOTFS_EXT2_LZMA is not set
-# BR2_TARGET_ROOTFS_EXT2_LZO is not set
-# BR2_TARGET_ROOTFS_EXT2_XZ is not set
-# BR2_TARGET_ROOTFS_EXT2_ZSTD is not set
+# BR2_TARGET_ROOTFS_EXT2 is not set
 # BR2_TARGET_ROOTFS_F2FS is not set
 
 #
@@ -4912,7 +4884,26 @@ BR2_TARGET_ROOTFS_EXT2_NONE=y
 #
 # BR2_TARGET_ROOTFS_JFFS2 is not set
 # BR2_TARGET_ROOTFS_OCI is not set
-# BR2_TARGET_ROOTFS_SQUASHFS is not set
+BR2_TARGET_ROOTFS_SQUASHFS=y
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_4K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_8K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_16K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_32K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_64K is not set
+BR2_TARGET_ROOTFS_SQUASHFS_BS_128K=y
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_256K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_512K is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_BS_1024K is not set
+BR2_TARGET_ROOTFS_SQUASHFS_BS="128K"
+BR2_TARGET_ROOTFS_SQUASHFS_PAD=y
+# BR2_TARGET_ROOTFS_SQUASHFS4_GZIP is not set
+# BR2_TARGET_ROOTFS_SQUASHFS4_LZ4 is not set
+# BR2_TARGET_ROOTFS_SQUASHFS4_LZMA is not set
+# BR2_TARGET_ROOTFS_SQUASHFS4_LZO is not set
+BR2_TARGET_ROOTFS_SQUASHFS4_XZ=y
+# BR2_TARGET_ROOTFS_SQUASHFS4_ZSTD is not set
+# BR2_TARGET_ROOTFS_SQUASHFS4_NONE is not set
+# BR2_TARGET_ROOTFS_SQUASHFS_EXTREME_COMP is not set
 # BR2_TARGET_ROOTFS_TAR is not set
 # BR2_TARGET_ROOTFS_UBI is not set
 # BR2_TARGET_ROOTFS_UBIFS is not set
@@ -5051,7 +5042,10 @@ BR2_PACKAGE_HOST_PYTHON3=y
 BR2_PACKAGE_HOST_QEMU_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_QEMU_SYSTEM_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_QEMU_USER_ARCH_SUPPORTS=y
-# BR2_PACKAGE_HOST_QEMU is not set
+
+#
+# host-qemu needs a host gcc >= 8
+#
 # BR2_PACKAGE_HOST_QORIQ_RCW is not set
 # BR2_PACKAGE_HOST_RASPBERRYPI_USBBOOT is not set
 # BR2_PACKAGE_HOST_RAUC is not set
@@ -5065,7 +5059,6 @@ BR2_PACKAGE_HOST_RUSTC_ABI="eabihf"
 # BR2_PACKAGE_HOST_RUSTC is not set
 BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 # BR2_PACKAGE_HOST_SAM_BA is not set
-# BR2_PACKAGE_HOST_SDBUS_CPP is not set
 # BR2_PACKAGE_HOST_SDBUSPLUS is not set
 # BR2_PACKAGE_HOST_SENTRY_CLI is not set
 # BR2_PACKAGE_HOST_SKOPEO is not set
@@ -5091,12 +5084,6 @@ BR2_PACKAGE_HOST_UTIL_LINUX=y
 #
 # Legacy config options
 #
-
-#
-# Legacy options removed in 2025.05
-#
-# BR2_PACKAGE_MPD_SOUNDCLOUD is not set
-# BR2_PACKAGE_DOCKER_ENGINE_DOCKER_INIT is not set
 
 #
 # Legacy options removed in 2025.02
